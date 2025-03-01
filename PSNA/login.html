@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2 id="faculty-name">Login</h2>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Extract faculty name from URL
+        const params = new URLSearchParams(window.location.search);
+        const facultyName = params.get("name");
+
+        if (facultyName) {
+            document.getElementById("faculty-name").innerText = "Login - " + facultyName;
+        }
+
+        // Department and Room Number Data
+        const facultyData = {
+            "Dr.A.VINCENT ANTONY KUMAR": { department: "Information Technology", room: "101" },
+            "Dr.R.VENKATESH": { department: "Computer Science", room: "202" },
+            "Dr.K.MUTHUMAYIL": { department: "Electronics", room: "303" }
+        };
+
+        // Form Submission Handler
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Get entered credentials
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Redirect to details.html with faculty data
+            if (facultyName && facultyData[facultyName]) {
+                window.location.href = details.html?name=${facultyName}&dept=${facultyData[facultyName].department}&room=${facultyData[facultyName].room};
+            } else {
+                alert("Invalid faculty selection");
+            }
+        });
+    </script>
+</body>
+</html>

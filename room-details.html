@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .room-details {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-details h3 {
+            margin-bottom: 20px;
+        }
+
+        .room-info {
+            margin-bottom: 10px;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Room Details</h2>
+
+    <div class="room-details">
+        <h3>Room Information</h3>
+        <div id="room-info" class="room-info"></div>
+
+        <!-- Submit Button -->
+        <button class="submit-button" id="submitBtn">Submit</button>
+    </div>
+
+    <script>
+        // Get the room number from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const room = urlParams.get('room');
+
+        // Display the room number
+        if (room) {
+            document.getElementById('room-info').innerHTML = `You have selected: <strong>${room}</strong>`;
+        } else {
+            document.getElementById('room-info').innerHTML = 'No room selected.';
+        }
+
+        // Handle submit button click
+        document.getElementById('submitBtn').onclick = function() {
+            // Redirect to a confirmation or dashboard page (replace with your desired URL)
+            window.location.href = 'confirmation.html?room=' + room;
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PSNA College</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+            background: #f7fafc;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #2b5876, #4e4376);
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: rgb(58, 58, 248);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .admin-section {
+            margin: 3rem auto;
+            padding: 2rem;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: rgb(58, 58, 248);
+            outline: none;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.5rem;
+        }
+
+        .admin-section button {
+            padding: 12px 20px;
+            color: #fff;
+            background: rgb(58, 58, 248);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .admin-section button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        /* New Admin Logo */
+        .admin-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #4e4376;
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .admin-logo:hover {
+            transform: rotate(360deg); /* Rotate on hover */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 480px) {
+            .admin-section {
+                width: 90%;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PSNA</h1>
+        <nav>
+            <a href="admin1.html" style="color: #f5f5f5; text-decoration: none;">Home</a>
+        </nav>
+    </header>
+
+    <div class="admin-section">
+        <!-- Unique Admin Logo -->
+        <div class="admin-logo">A</div>
+        <h2>Admin Login</h2>
+        <form id="adminForm" onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PSNA College. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation (you can enhance this)
+            let valid = true;
+
+            // Clear previous error messages
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('passwordError').innerText = '';
+
+            // Validate email
+            if (!email) {
+                document.getElementById('emailError').innerText = 'Email is required.';
+                valid = false;
+            }
+
+            // Validate password
+            if (!password) {
+                document.getElementById('passwordError').innerText = 'Password is required.';
+                valid = false;
+            }
+
+            // If valid, proceed (you can replace this alert with actual logic)
+            if (valid) {
+                alert('Login successful!'); // Replace with your actual login logic
+                // Here you could send the data to your server, for example
+            }
+
+            return false; // Prevent actual form submission
+        }
+    </script>
+</body>
+</html>

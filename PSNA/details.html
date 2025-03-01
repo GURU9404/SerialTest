@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="details-container">
+        <h2>Faculty Details</h2>
+        <p><strong>Name:</strong> <span id="faculty-name"></span></p>
+        <p><strong>Department:</strong> <span id="department"></span></p>
+        <p><strong>Room No:</strong> <span id="room-no"></span></p>
+    </div>
+
+    <script>
+        // Extract parameters from URL
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("faculty-name").innerText = params.get("name") || "N/A";
+        document.getElementById("department").innerText = params.get("dept") || "N/A";
+        document.getElementById("room-no").innerText = params.get("room") || "N/A";
+    </script>
+</body>
+</html>

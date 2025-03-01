@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PSNA College</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: "Lato", sans-serif; }
+
+        /* Sidenav styling */
+        .sidenav {
+            height: 100%; 
+            width: 0; 
+            position: fixed; 
+            z-index: 1; 
+            top: 0; 
+            left: 0;
+            background-color: #111; 
+            overflow-x: hidden; 
+            transition: 0.5s; 
+            padding-top: 30px;
+        }
+
+        .sidenav a {
+            padding: 8px 32px; 
+            text-decoration: none; 
+            font-size: 25px; 
+            color: #818181;
+            display: block; 
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover { color: #f1f1f1; }
+        
+        .sidenav .closebtn {
+            position: absolute; 
+            top: 0; 
+            right: 25px; 
+            font-size: 36px; 
+        }
+
+        /* Main header styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #333;
+            color: #ffffff;
+        }
+
+        .header-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-item img {
+            margin-left: 10px; /* Space between text and image */
+        }
+
+        /* Custom heading style */
+        .custom-heading { 
+            color: rgb(58, 58, 248); 
+            text-align: center; 
+        }
+
+        /* Flexbox for the main content */
+        main {
+            padding: 3rem 1rem;
+        }
+
+        /* Responsive design for small screens */
+        @media screen and (max-height: 450px) {
+            .sidenav { padding-top: 15px; }
+            .sidenav a { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Admin and Menu Button -->
+    <header>
+        <div class="header-item">
+            <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+            <img src="Screenshot 2024-09-19 164713.png" width="`100" height="40" alt="PSNA Logo">
+        </div>
+        <div class="header-item">
+            <!-- Clicking on "Admin" will take you to admin.html -->
+            <a href="admin.html" style="font-size:30px; cursor:pointer; color:white;">Admin</a>
+            <img src="just.png" width="90" height="30" alt="Admin Logo">
+        </div>
+    </header>
+
+    <!-- Side Navigation Bar -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="how.html">Home</a> <!-- Link to Home Page -->
+        <a href="javascript:void(0)" id="about-link">About</a>
+        <div class="about-details" id="about-details">
+            <p>We are dedicated to providing the best services with a passionate team.</p>
+            <p>Founded in [Year], we've grown to be industry leaders, striving for excellence.</p>
+            <p>Our mission is to deliver high-quality products and ensure customer satisfaction.</p>
+        </div>
+        <a href="javascript:void(0)" id="contact-link">Contact</a>
+        <div class="contact-details" id="contact-details">
+            <p>Email: <a href="mailto:info@psnacollege.edu">info@psnacollege.edu</a></p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <center>
+            <img src="Screenshot 2024-09-19 164713.png" alt="PSNA College Banner">
+        </center>
+        <br><br><br>
+        <center>
+            <a href="index.html"><h1 id="serial-test-1" class="custom-heading">Serial Test 1</h1></a>
+            <br><br>
+            <a href="index.html"><h1 id="serial-test-2" class="custom-heading ">Serial Test 2</h1></a>
+        </center>
+    </main>
+
+    <!-- JavaScript to handle the Sidenav and visibility toggling -->
+    <script>
+        // Function to open the side navigation bar
+        function openNav() { 
+            document.getElementById("mySidenav").style.width = "250px"; 
+        }
+
+        // Function to close the side navigation bar
+        function closeNav() { 
+            document.getElementById("mySidenav").style.width = "0"; 
+        }
+
+        // Toggle the About section visibility
+        document.getElementById('about-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            document.getElementById('about-details').classList.toggle('active');
+            document.getElementById('contact-details').classList.remove('active'); // Hide Contact details
+        });
+
+        // Toggle the Contact section visibility
+        document.getElementById('contact-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            document.getElementById('contact-details').classList.toggle('active');
+            document.getElementById('about-details').classList.remove('active'); // Hide About details
+        });
+
+        // JavaScript to toggle visibility between Serial Test 1 and Serial Test 2
+        document.getElementById('serial-test-1').addEventListener('click', () => {
+            // Hide Serial Test 1 and show Serial Test 2
+            document.getElementById('serial-test-1').style.display = 'none';
+            document.getElementById('serial-test-2').style.display = 'block';
+        });
+
+        document.getElementById('serial-test-2').addEventListener('click', () => {
+            // Hide Serial Test 2 and show Serial Test 1
+            document.getElementById('serial-test-2').style.display = 'none';
+            document.getElementById('serial-test-1').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

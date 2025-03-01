@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department and Available Rooms</title>
+    <style>
+      <style>
+    /* General Body Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background-color: #f0f4f8;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Header Styling */
+    h2 {
+        color: #4e73df;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    /* Department Dropdown Styling */
+    .department-container {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    select {
+        width: 250px;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    select:focus {
+        border-color: #4e73df;
+        box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+        outline: none;
+    }
+
+    /* Room Numbers List Styling */
+    .room-numbers {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 30px;
+    }
+
+    .room-numbers li {
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 10px 20px;
+        background-color: #4e73df;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .room-numbers li:hover {
+        background-color: #2e59d9;
+        transform: translateY(-2px);
+    }
+
+    /* Room Table (if added later) Styling */
+    .room-table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        display: none;
+    }
+
+    .room-table th,
+    .room-table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .room-table th {
+        background: #4e73df;
+        color: white;
+    }
+
+    .room-table td {
+        background: #f9f9f9;
+    }
+
+    .room-table tr:hover {
+        background: #f1f1f1;
+    }
+
+    /* Message When No Department is Selected */
+    .no-department {
+        color: red;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    /* Media Query for Smaller Screens */
+    @media screen and (max-width: 768px) {
+        select {
+            width: 80%;
+        }
+
+        .room-numbers li {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+    </style>
+</head>
+<body>
+    <h2>Select Department to View Available Rooms</h2>
+
+    <!-- Department selection form -->
+    <div class="department-container">
+        <label for="department">Select Department: </label>
+        <select id="department" onchange="showRooms()">
+            <option value="">Select...</option>
+            <option value="computer_science">Computer Science</option>
+            <option value="mechanical">Mechanical Engineering</option>
+            <option value="civil">Civil Engineering</option>
+            <option value="electronics">Electronics and Communication</option>
+        </select>
+    </div>
+
+    <!-- Room numbers list -->
+    <ul id="room-list" class="room-numbers">
+        <!-- Room numbers will be displayed here dynamically -->
+    </ul>
+
+    <script>
+        function showRooms() {
+            // Get the selected department
+            const department = document.getElementById("department").value;
+
+            // Find the room list element
+            const roomList = document.getElementById("room-list");
+
+            // Clear previous room list
+            roomList.innerHTML = "";
+
+            // Define available rooms data (only room numbers for simplicity)
+            const rooms = {
+                computer_science: ["CS101", "CS102", "CS103", "CS104", "CS105", "CS106", "CS107", "CS108", "CS109", "CS110"],
+                mechanical: ["ME101", "ME102", "ME103", "ME104", "ME105", "ME106", "ME107", "ME108", "ME109", "ME110"],
+                civil: ["CV101", "CV102", "CV103", "CV104", "CV105", "CV106", "CV107", "CV108", "CV109", "CV110"],
+                electronics: ["EC101", "EC102", "EC103", "EC104", "EC105", "EC106", "EC107", "EC108", "EC109", "EC110"]
+            };
+
+            // Check if a department is selected and rooms exist for that department
+            if (department && rooms[department]) {
+                const departmentRooms = rooms[department];
+
+                // Show the room numbers as clickable items
+                departmentRooms.forEach(room => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = room;
+                    listItem.onclick = function () {
+                        // Redirect to the next page (room-details.html) with the room number as a URL parameter
+                        window.location.href = `room-details.html?room=${room}`;
+                    };
+                    roomList.appendChild(listItem);
+                });
+            } else {
+                // If no department selected, display a message
+                const message = document.createElement("p");
+                message.textContent = "Please select a department to view available rooms.";
+                message.classList.add("no-department");
+                roomList.appendChild(message);
+            }
+        }
+    </script>
+</body>
+</html>
