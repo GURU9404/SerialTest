@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSNA Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+        .login-container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px; /* Restricting max width for better form alignment */
+        }
+        .logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 100%; /* Make it responsive */
+            max-width: 450px; /* Large enough to be clearly visible */
+            height: auto;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #338af3;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #007bff;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .forgot-password a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="Screenshot 2024-09-19 164713.png" alt="PSNA Logo">
+        </div>
+ 
+        <form>
+            <input type="text" placeholder="EMAIL/USER ID" required>
+            <br>
+            <input type="password" placeholder="PASSWORD" required>
+            <br>
+            <center><button type="submit" class="login-button">LOGIN</button></center>
+            <a href="indeex.html" class="login-button">LOGIN</a>
+        </form>
+        <div class="forgot-password">
+            <center>
+                <a href="#">Forgot your passwords?</a>
+            </center>
+        
+        </div>
+    </div>
+</body>
+</html>
