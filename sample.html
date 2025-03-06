@@ -3,177 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSNA Login & Register</title>
+    <title>Admin Dashboard - PSNA College</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        body {
+            font-family: "Lato", sans-serif;
             margin: 0;
-            background-color: #ffffff;
+            background: #f7fafc;
+            color: #333;
         }
-        .login-container {
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            background-color: #fff;
-        }
-        .logo-container {
+
+        header {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #2b5876, #4e4376);
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .logo-container img {
+
+        h1 {
+            color: white;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .admin-section {
+            margin: 3rem auto;
+            padding: 2rem;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin: 1.5rem 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input {
             width: 100%;
-            max-width: 250px;
-            height: auto;
-        }
-        input {
-            width: calc(100% - 24px);
             padding: 12px;
-            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: rgb(58, 58, 248);
+            outline: none;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.5rem;
             display: block;
+            height: 16px;
         }
-        .password-container {
+
+        .password-wrapper {
             position: relative;
-            width: 93%;
         }
-        .password-container input {
-            width: calc(100% - 24px);
-            padding-right: 40px;
-        }
+
         .toggle-password {
             position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    color: #007bff;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #555;
         }
-        .login-button {
+
+        .admin-section button {
             width: 100%;
             padding: 12px;
-            background-color: #338af3;
-            color: white;
-            font-size: 16px;
+            color: #fff;
+            background: rgb(58, 58, 248);
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 1rem;
+            transition: background 0.3s, transform 0.2s;
         }
-        .login-button:hover {
-            background-color: #007bff;
+
+        .admin-section button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
         }
-        .toggle-text {
-            margin-top: 15px;
-            font-size: 14px;
-            cursor: pointer;
-            color: #007bff;
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 3rem;
         }
-        .toggle-text:hover {
-            text-decoration: underline;
-        }
-        .forgot-password {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-        .forgot-password a {
-            text-decoration: none;
-            color: #007bff;
+
+        @media (max-width: 480px) {
+            .admin-section {
+                width: 90%;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo-container">
-            <img src="Screenshot 2024-09-19 164713.png" alt="PSNA Logo">
-        </div>
+    <header>
+        <h1>PSNA</h1>
+        <nav>
+            <a href="admin1.html" style="color: #f5f5f5; text-decoration: none;">Home</a>
+        </nav>
+    </header>
 
-        <h2 id="formTitle">Login</h2>
-
-        <form id="authForm">
-            <input type="text" id="username" placeholder="EMAIL/USER ID" required>
-            <div class="password-container">
-                <input type="password" id="password" placeholder="PASSWORD" required>
-                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+    <div class="admin-section">
+        <h2>Admin Login</h2>
+        <form id="adminForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <span class="error" id="emailError"></span>
             </div>
-            <button type="submit" id="authButton" class="login-button">LOGIN</button>
+            <div class="form-group password-wrapper">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <button type="submit">Login</button>
         </form>
-
-        <div class="forgot-password">
-            <a href="#">Forgot your password?</a>
-        </div>
-
-        <p class="toggle-text" onclick="toggleForm()">Don't have an account? Register</p>
-
-        <script>
-            let isRegister = false;
-
-            function toggleForm() {
-                isRegister = !isRegister;
-                document.getElementById('formTitle').innerText = isRegister ? 'Register' : 'Login';
-                document.getElementById('authButton').innerText = isRegister ? 'REGISTER' : 'LOGIN';
-                document.querySelector('.toggle-text').innerText = isRegister ? 'Already have an account? Login' : "Don't have an account? Register";
-            }
-
-            function togglePassword() {
-                let passwordField = document.getElementById("password");
-                passwordField.type = passwordField.type === "password" ? "text" : "password";
-            }
-
-            document.getElementById("authForm").addEventListener("submit", async function(event) {
-                event.preventDefault();
-
-                let username = document.getElementById("username").value.trim();
-                let password = document.getElementById("password").value.trim();
-                let authButton = document.getElementById("authButton");
-
-                if (username === "" || password === "") {
-                    alert("Please fill in all fields.");
-                    return;
-                }
-
-                authButton.disabled = true;
-                authButton.innerText = isRegister ? "REGISTERING..." : "LOGGING IN...";
-
-                let endpoint = isRegister ? "/register" : "/login";
-                try {
-                    let response = await fetch(`http://localhost:3000${endpoint}`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ username, password }),
-                    });
-
-                    let data = await response.json();
-                    
-                    if (!data.success) {
-                        throw new Error(data.message);
-                    }
-
-                    alert(data.message);
-
-                    if (isRegister) {
-                        toggleForm(); // Switch to login after successful registration
-                    } else {
-                        window.location.href = "dashboard.html"; // Redirect on successful login
-                    }
-                } catch (error) {
-                    alert(error.message || "An error occurred. Please try again.");
-                } finally {
-                    authButton.disabled = false;
-                    authButton.innerText = isRegister ? "REGISTER" : "LOGIN";
-                }
-            });
-        </script>
     </div>
+
+    <footer>
+        <p>&copy; 2025 PSNA College. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        }
+
+        document.getElementById('adminForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            
+            emailError.innerText = '';
+            passwordError.innerText = '';
+            let isValid = true;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.innerText = 'Enter a valid email.';
+                isValid = false;
+            }
+
+            if (password.length < 6) {
+                passwordError.innerText = 'Password must be at least 6 characters.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulated authentication
+                if (email === "admin@psna.edu" && password === "admin123") {
+                    alert("Login successful!");
+                    sessionStorage.setItem("adminLoggedIn", "true"); // Store session
+                    window.location.href = "dashboard.html"; // Redirect
+                } else {
+                    alert("Invalid credentials. Try again.");
+                }
+            }
+        });
+
+        // Prevent logged-in admin from seeing the login page
+        if (sessionStorage.getItem("adminLoggedIn") === "true") {
+            window.location.href = "dashboard.html";
+        }
+    </script>
 </body>
 </html>

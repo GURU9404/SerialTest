@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <style>
+    /* Import Google Fonts */
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      text-decoration: none;
+      border: none;
+      outline: none;
+    }
+
+    body {
+      background: rgb(226, 226, 226);
+      display: flex;
+    }
+
+    /* Sidebar Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 90px;
+      background: #fff;
+      overflow: hidden;
+      transition: 0.5s;
+    }
+
+    nav:hover {
+      width: 250px;
+    }
+
+    .logo {
+      text-align: center;
+      display: flex;
+      margin: 10px;
+      padding-bottom: 3rem;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .logo span {
+      font-weight: bold;
+      padding-left: 15px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    a {
+      width: 100%;
+      font-size: 14px;
+      color: rgb(85, 83, 83);
+      display: table;
+      padding: 10px 20px;
+    }
+
+    a:hover {
+      background: #eee;
+    }
+
+    a:hover i {
+      color: #34AF6D;
+      transition: 0.3s;
+    }
+
+    .logout {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    /* Main Content */
+    .container {
+      display: flex;
+      width: 100%;
+    }
+
+    .main {
+      padding: 20px;
+      width: 100%;
+    }
+
+    .main-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .attendance-list {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    /* Attendance Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #34AF6D;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    tr:hover {
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="https://via.placeholder.com/45" alt="Logo">
+          <span class="nav-item">Admin</span>
+        </a></li>
+        <li><a href="#"><i class="fas fa-menorah"></i> Dashboard</a></li>
+        <li><a href="#"><i class="fas fa-comment"></i> Message</a></li>
+        <li><a href="#"><i class="fas fa-database"></i> Report</a></li>
+        <li><a href="#"><i class="fas fa-chart-bar"></i> Attendance</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> Setting</a></li>
+        <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+      </ul>
+    </nav>
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Attendance</h1>
+        <i class="fas fa-user-cog"></i>
+      </div>
+
+      <section class="attendance">
+        <div class="attendance-list">
+          <h1>Attendance List</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email ID</th>
+                <th>Booked Room No.</th>
+                <th>Department</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>01</td><td>Sam David</td><td>sam.david@example.com</td><td>101</td><td>Design</td></tr>
+              <tr><td>02</td><td>Balbina Kherr</td><td>balbina.k@example.com</td><td>102</td><td>Coding</td></tr>
+              <tr><td>03</td><td>Badan John</td><td>badan.john@example.com</td><td>103</td><td>Testing</td></tr>
+              <tr><td>04</td><td>Emily Watson</td><td>emily.w@example.com</td><td>104</td><td>HR</td></tr>
+              <tr><td>05</td><td>Michael Lee</td><td>michael.lee@example.com</td><td>105</td><td>Finance</td></tr>
+              <tr><td>06</td><td>Sophia White</td><td>sophia.white@example.com</td><td>106</td><td>Marketing</td></tr>
+              <tr><td>07</td><td>David Brown</td><td>david.b@example.com</td><td>107</td><td>Operations</td></tr>
+              <tr><td>08</td><td>Lisa Green</td><td>lisa.green@example.com</td><td>108</td><td>Sales</td></tr>
+              <tr><td>09</td><td>James Carter</td><td>james.carter@example.com</td><td>109</td><td>Support</td></tr>
+              <tr><td>10</td><td>Olivia Moore</td><td>olivia.moore@example.com</td><td>110</td><td>Development</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+
+</body>
+</html>
